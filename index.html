@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>🔥 Developer WebPage</title>
+  <style>
+    body {
+      background: #1e1e1e;
+      color: white;
+      font-family: 'Pretendard', 'Segoe UI', sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+    button {
+      margin: 10px;
+      padding: 15px 30px;
+      font-size: 16px;
+      background: #4caf50;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    button:hover {
+      background: #45a049;
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #4caf50;
+    }
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .tooltip-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip-wrap .tooltip-text {
+      visibility: hidden;
+      background-color: black;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 14px;
+      position: absolute;
+      top: -35px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      z-index: 100;
+      opacity: 0;
+      transition: opacity 0.1s;
+    }
+
+    .tooltip-wrap:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚀 Developer WebPage</h1>
+
+  <!-- 검색창 -->
+  <select id="searchEngine" style="padding: 10px; font-size: 16px;">
+    <option value="google">Google</option>
+    <option value="naver">Naver</option>
+    <option value="youtube">YouTube</option>
+    <option value="stackoverflow">Stack Overflow</option>
+    <option value="github">GitHub</option>
+  </select>
+  <input type="text" id="searchInput" placeholder="검색어 입력..." style="padding: 10px; font-size: 16px; width: 300px;">
+  <button title="검색" onclick="search()">검색</button><br>
+
+  <div class="button-container">
+    <div class="tooltip-wrap">
+      <button onclick="openWin('https://stackoverflow.com/', 'stackoverflow')">🔥 Stack Overflow</button>
+      <span class="tooltip-text">Stack Overflow 바로가기</span>
+    </div>
+    <div class="tooltip-wrap">
+      <button onclick="openWin('https://velog.io/', 'velog')">📰 Velog</button>
+      <span class="tooltip-text">Velog 바로가기</span>
+    </div>
+    <div class="tooltip-wrap">
+      <button onclick="openWin('https://github.com', 'github')">🐙 GitHub</button>
+      <span class="tooltip-text">GitHub 바로가기</span>
+    </div>
+    <div class="tooltip-wrap">
+      <button onclick="openWin('https://github.com/minhyeokshin', 'Mygithub')">🧑‍💻 Developer GitHub</button>
+      <span class="tooltip-text">Developer GitHub 바로가기</span>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <div class="tooltip-wrap">
+      <button onclick="openWin('https://ap-southeast-2.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=JMskaCOAdK_RQdMdTTDDR-TQMxXHReeBs8ik_DU-2fg&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_ap-southeast-2_33dbfe19d4a308a3', 'aws')">☁️ aws</button>
+      <span class="tooltip-text">AWS 바로가기</span>
+    </div>
+    <div class="tooltip-wrap">
+      <button onclick="openWin('https://notion.so', 'notion')">📝 Notion</button>
+      <span class="tooltip-text">Notion 바로가기</span>
+    </div>
+    <div class="tooltip-wrap">
+      <button onclick="openWin('https://chat.openai.com', 'chatgpt')">💬 ChatGPT</button>
+      <span class="tooltip-text">ChatGPT 바로가기</span>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <div class="tooltip-wrap">
+      <button onclick="openWin('https://developer.mozilla.org/ko/', 'mdn')">📚 MDN</button>
+      <span class="tooltip-text">MDN 바로가기</span>
+    </div>
+    <div class="tooltip-wrap">
+      <button onclick="openWin('https://www.w3schools.com/', 'w3schools')">🧪 W3Schools</button>
+      <span class="tooltip-text">W3Schools 바로가기</span>
+    </div>
+    <div class="tooltip-wrap">
+      <button onclick="openWin('https://devdocs.io/', 'devdocs')">📚 DevDocs</button>
+      <span class="tooltip-text">DevDocs 바로가기</span>
+    </div>
+    <div class="tooltip-wrap">
+      <button onclick="openWin('https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/', 'springdocs')">🌱 Spring Docs</button>
+      <span class="tooltip-text">Spring Docs 바로가기</span>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <div class="tooltip-wrap">
+      <button onclick="openWin('https://vercel.com/dashboard', 'vercel')">🚀 Vercel</button>
+      <span class="tooltip-text">Vercel 바로가기</span>
+    </div>
+    <div class="tooltip-wrap">
+      <button onclick="openWin('https://hub.docker.com/', 'dockerhub')">🐳 DockerHub</button>
+      <span class="tooltip-text">DockerHub 바로가기</span>
+    </div>
+    <div class="tooltip-wrap">
+      <button onclick="openWin('https://www.postman.com/', 'postman')">📮 Postman</button>
+      <span class="tooltip-text">Postman 바로가기</span>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <div class="tooltip-wrap">
+      <button onclick="openWin('https://www.acmicpc.net/', 'boj')">🔢 백준</button>
+      <span class="tooltip-text">백준 바로가기</span>
+    </div>
+    <div class="tooltip-wrap">
+      <button onclick="openWin('https://programmers.co.kr/', 'programmers')">🧠 프로그래머스</button>
+      <span class="tooltip-text">프로그래머스 바로가기</span>
+    </div>
+    <div class="tooltip-wrap">
+      <button onclick="openWin('https://leetcode.com/', 'leetcode')">🎯 LeetCode</button>
+      <span class="tooltip-text">LeetCode 바로가기</span>
+    </div>
+  </div>
+
+  <script>
+    function openWin(url, name) {
+      window.open(url, '_blank');ㅇ
+    }
+    document.getElementById("searchInput").addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        search();
+      }
+    });
+    function search() {
+      const keyword = document.getElementById("searchInput").value.trim();
+      const engine = document.getElementById("searchEngine").value;
+      if (keyword !== "") {
+        let url = "";
+        switch (engine) {
+          case "google":
+            url = `https://www.google.com/search?q=${encodeURIComponent(keyword)}`;
+            break;
+          case "naver":
+            url = `https://search.naver.com/search.naver?query=${encodeURIComponent(keyword)}`;
+            break;
+          case "youtube":
+            url = `https://www.youtube.com/results?search_query=${encodeURIComponent(keyword)}`;
+            break;
+          case "stackoverflow":
+            url = `https://stackoverflow.com/search?q=${encodeURIComponent(keyword)}`;
+            break;
+          case "github":
+            url = `https://github.com/search?q=${encodeURIComponent(keyword)}`;
+            break;
+        }
+        window.open(url, '_blank');
+      } else {
+        alert("검색어를 입력하세요.");
+      }
+    }
+  </script>
+</body>
+</html>
